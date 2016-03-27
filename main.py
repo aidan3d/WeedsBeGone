@@ -1,13 +1,20 @@
 ###################################################################
-#              CIST 2742, SECTION 20389
+#                WEEDS BE GONE!
 #
-# Assignment:  Weeds Be Gone - Science Works Demo Version
+# Author:        Aidan Hegarty
 #
-# Name:        Aidan Hegarty, SID 3036 (last 4)
+# Last modified: March 27, 2016
 #
-# Description: A board game in which the player matches
-#              a number displayed on screen by removing
-#              the right number of weeds!
+# Description:   A board game in which the player matches
+#                a number displayed on screen by removing
+#                clumps of weeds!
+#
+#                Note:
+#                    This could be a mathematics game in
+#                    which only prime numbers are
+#                    selected, or perhaps factors of
+#                    a non-prime number. Letters? LCD
+#                    mnemonic symbols? "Red Returns?"
 #
 ###################################################################
 import random
@@ -16,68 +23,48 @@ import board
 import pygame
 from pygame.locals import *
 
-# Create global constants to
-# hold the 'garden's' width and
-# height (in pixels) which 
-# represent 'feet
+# Create global constants to hold the 'garden's' width and
+# height (in pixels). A pixel represents a foot of length.
 SCREEN_WIDTH = 480
 SCREEN_HEIGHT = 640
 
-# Create a global constant to
-# hold the height of the
-# 'countdown strip' at the
-# bottom of the game window.
+# Create a global constant to hold the height of the
+# 'countdown strip' at the bottom of the game window.
 SCORE_PAD_HEIGHT = 160
 
-# Create global constants to
-# hold the cell (or square) 
-# count horizontally and
-# vertically.
+# Create global constants to hold the cell (or 'square'). 
+# Count horizontally and vertically.
 NUM_CELLS_HOR = 8
 NUM_CELLS_VER = 8
 
-# Global constants
-# to reference the
-# 'starting coordinates'
+# Global constants to reference the 'starting coordinates'
 # for the grid.
 X_ORIGIN = 0
 Y_ORIGIN = 0
 
 FPS = 30
 
-# Global constant to
-# represent the number
-# of frames in the
-# weed animation's
-# 'film strip'
+# Global constant to reference the number of frames in the
+# weed animation's 'film strip.'
 NUM_FRAMES = 10
 
-# A global constant to
-# represent the number of
-# slides in the splash
-# screen slideshow.
+# A global constant to reference the number of slides in
+# the splash screen slideshow.
 NUM_SPLASH_SCREEN_SLIDES = 9
 
-# A global constant to
-# represent the number of
-# slides in the splash
-# screen slideshow.
+# A global constant referring to the number of slides
+# in the splash screen slideshow.
 NUM_HELP_SCREEN_SLIDES = 68
 
-# A global constant to
-# hold the point height
-# of the countdown display
-# font
+# A global constant to hold the point height of the
+# countdown display font
 COUNTDOWN_TEXT_HEIGHT = 200
 
 
 TIMER_TEXT_HEIGHT = 24
 
-# A global constant to
-# control the maximum
-# and minimum weed counter
-# at the bottom of the
-# screen
+# A global constant to control the maximum and minimum
+# weed counter at the screen's bottom
 # (i.e. 1 - 15 )
 MIN_COUNT = 2
 MAX_COUNT = 44
@@ -87,57 +74,48 @@ def main():
 
 
     ###############################################################
-    # Initialization phase.
+    # 1.    Initialization phase.
     #
     ###############################################################
 
-    # Create a signal flag to raise
-    # when the player wishes to
-    # stop playing the game.
+    # Create a 'signal flag'; it will be 'raised' when the
+    # player wishes to stop playing the game.
     done_playing = False
 
-    # Create a random number
-    # for the player to match
-    # with 'mowed' (i.e. erased)
-    # weeds.
+    # Create a random number for the player to match with
+    # 'mowed' (i.e. erased) weeds.
     countdown_number = random.randint(MIN_COUNT, MAX_COUNT)
 
 
 
     ###############################################################
-    # Create the file names.
+    # 1A.   Create the file names.
     #
     ###############################################################
 
-    # The 'green' weed image base file name. 
-    # The frame number and the file type
-    # will be added to the end of the file
+    # The 'green' weed image base file name. The frame number
+    # and the file type will be added to the end of the file
     # name in load_reel.
     green_weed_file_name_base = 'images\weed'
 
-    # The 'red' weed image base file name.
-    # The 'red' weeds are there to
-    # represent 'mis-hits' on screen.
-    # If you see a red weed, then
-    # you know you can't subtract
-    # that value from the 'weed count.'
+    # The 'red' weed image base file name. The 'red' weeds'
+    # purpose is to represent 'mis-hits' on screen. Should
+    # you happen upon a red weed, you'll know you can't
+    # subtract that value from the 'weed count.'
     # (countdown_number)
     red_weed_file_name_base = 'images\weed_red'
 
-    # The base file name
-    # for the splash screen
-    # slideshow
+    # The base file name for the splash screen slideshow.
     splash_screen_file_name_base = 'images\splash_screen'
 
-    # The base file name
-    # for the help screen
+    # The base file name for the help screen
     # slideshow.
     help_screen_file_name_base = 'images\help_screen'
 
 
 
     ###############################################################
-    # Create the game board.
+    # 1B.   Create the game board.
     #
     ###############################################################
 
@@ -153,7 +131,7 @@ def main():
 
 
     ###############################################################
-    # Set up pygame.
+    # 1C.   Set up pyGame.
     #
     ###############################################################    
 
@@ -166,17 +144,15 @@ def main():
     )
     pygame.display.set_caption('Weeds Be Gone!')
 
-    # Create the display font
-    # for the countown timer.
+    # Create the display font for the countown timer.
     full_screen_font = pygame.font.SysFont("arial bold", COUNTDOWN_TEXT_HEIGHT)
 
-    # Create the smaller font,
-    # for the timer.
+    # Create the smaller font for the timer.
     timer_font = pygame.font.SysFont("arial", TIMER_TEXT_HEIGHT)
 
 
     ###############################################################
-    # Load the slideshows and the weed clump bitmaps.
+    # 1D.   Load the slideshows and the weed clump bitmaps.
     #
     ###############################################################
 
@@ -219,7 +195,7 @@ def main():
 
 
     ###############################################################
-    # Execution phase.
+    # 2.    Execution phase.
     #
     ###############################################################
 
@@ -235,7 +211,7 @@ def main():
 
 
     ###############################################################
-    # Start the timer.
+    # 2A.   Start the timer.
     #
     ###############################################################
 
@@ -245,7 +221,7 @@ def main():
     while not done_playing:
 
         ###########################################################
-        # Update the timer.
+        # 2A(i).   Update the timer.
         #
         ###########################################################
         current_time = time.time()
@@ -277,8 +253,8 @@ def main():
 
 
             #######################################################
-            # Check whether the player has hit the 'stop'
-            # button.
+            # 2A(i)a.   Check whether the player has hit the
+            #           'stop' button.
             #
             #######################################################
 
@@ -292,7 +268,7 @@ def main():
             # help button...
             elif (
                 mousey > SCREEN_HEIGHT-SCORE_PAD_HEIGHT and
-                mousex > 0.25*SCREEN_WIDTH
+                mousex > (0.25 * SCREEN_WIDTH)
                 ):
                     # Display the help screen.
                     display_screen(screen, help_screen_file_names)
