@@ -3,7 +3,7 @@
 #
 # Author:        Aidan Hegarty
 #
-# Last modified: March 27, 2016
+# Last modified: September 13, 2016
 #
 # Description:   A board game in which the player matches
 #                a number displayed on screen by removing
@@ -14,7 +14,7 @@
 #                    which only prime numbers are
 #                    selected, or perhaps factors of
 #                    a non-prime number. Letters? LCD
-#                    mnemonic symbols? "Red Returns?"
+#                    mnemonic symbols? "Red's Return?"
 #
 ###################################################################
 import random
@@ -53,7 +53,7 @@ NUM_FRAMES = 10
 NUM_SPLASH_SCREEN_SLIDES = 9
 
 # A global constant referring to the number of slides
-# in the splash screen slideshow.
+# in the help room slideshow.
 NUM_HELP_SCREEN_SLIDES = 68
 
 # A global constant to hold the point height of the
@@ -422,7 +422,7 @@ def main():
 
 
     ###############################################################
-    # Termination phase.
+    # 3.     Termination phase.
     #
     ###############################################################
 
